@@ -1,9 +1,6 @@
 package logic;
 
-import java.io.Serializable;
-
-public class Level implements Serializable {
-    private int numberOfLevel;
+public class Level {
     private static final int WALL = 1;
     private static final int PLAYER = 2;
     private static final int TARGET = 4;
@@ -142,13 +139,5 @@ public class Level implements Serializable {
 
     public boolean isFinished() {
         return countBoxOnTarget == countTarget;
-    }
-
-    public int getNumberOfLevel() {
-        return numberOfLevel;
-    }
-
-    public void setNumberOfLevel(int numberOfLevel) {
-        this.numberOfLevel = numberOfLevel;
     }
 }

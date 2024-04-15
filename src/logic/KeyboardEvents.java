@@ -1,12 +1,9 @@
 package logic;
 
 import graphics.GraphicInterface;
-import utils.Config;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-
-import static utils.Utils.serialize;
 
 public class KeyboardEvents extends KeyAdapter {
     private final GraphicInterface graphicInterface;
@@ -25,15 +22,7 @@ public class KeyboardEvents extends KeyAdapter {
             case KeyEvent.VK_LEFT -> move(0, -1);
             case KeyEvent.VK_RIGHT -> move(0, 1);
             case KeyEvent.VK_Q -> System.exit(1);
-            case KeyEvent.VK_N -> {
-                game.nextLevel();
-                move(0, 0);
-            }
-            case KeyEvent.VK_ESCAPE -> {
-                Config config = new Config(game.getLevel());
-                serialize(config);
-                graphicInterface.toMenu();
-            }
+            case KeyEvent.VK_N -> game.nextLevel();
         }
     }
 

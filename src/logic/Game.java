@@ -6,23 +6,13 @@ public class Game {
     private Level current;
     private final LevelBuilder levelBuilder;
 
-    public Game(LevelBuilder levelBuilder, int num) {
+    public Game(LevelBuilder levelBuilder) {
         this.levelBuilder = levelBuilder;
-        readLevel(num);
-    }
-
-    public Game(LevelBuilder levelBuilder, Level current) {
-        this.levelBuilder = levelBuilder;
-        this.current = current;
-        levelBuilder.setScanner(current.getNumberOfLevel() + 1);
+        nextLevel();
     }
 
     public Level getLevel() {
         return current;
-    }
-
-    public void readLevel(int num) {
-        current = levelBuilder.readLevel(num);
     }
 
     public boolean nextLevel() {
