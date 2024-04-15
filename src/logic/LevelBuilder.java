@@ -13,21 +13,42 @@ public class LevelBuilder {
         s = new Scanner(in);
     }
 
+    public void setScanner(int num) {
+        String line;
+        if (num > 1 && num <= 91) {
+            while (s.hasNextLine()) {
+                line = s.nextLine();
+                if (line.contains(String.valueOf(num - 1))) {
+                    break;
+                }
+            }
+        }
+        s.nextLine();
+    }
+
+    public Level readLevel(int num) {
+        setScanner(num);
+        return readNextLevel();
+    }
+
     public Level readNextLevel() {
         Level level = new Level();
         String line;
         int i = 0;
-        try {
-            line = s.nextLine();
-        } catch (Exception e) {
-            return null;
-        }
+        line = s.nextLine();
+
         while (line.length() > 0) {
             if (line.charAt(0) == ';') {
                 int j = 1;
                 while (line.charAt(j) == ' ') {
                     j++;
                 }
+                StringBuilder levelNumber = new StringBuilder();
+                do {
+                    levelNumber.append(line.charAt(j));
+                    j++;
+                } while (j < line.length());
+                level.setNumberOfLevel(Integer.parseInt(levelNumber.toString()));
             } else {
                 for (int j = 0; j < line.length(); j++) {
                     switch (line.charAt(j)) {
